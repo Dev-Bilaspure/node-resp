@@ -68,6 +68,74 @@ Parses a RESP message string into JavaScript objects.
 - **Throws**:
     - `Error` if the RESP message is malformed.
 
+### Other Utility Methods
+
+### `nullToRESP(): string`
+
+Converts `null` to the RESP format.
+
+- **Returns**:
+    - A RESP string representing `null` (e.g., `_\r\n`).
+
+### `booleanToRESP(bool: boolean): string`
+
+Converts a boolean value to the RESP format.
+
+- **Parameters**:
+    - `bool` *(boolean)*: The boolean value to serialize.
+- **Returns**:
+    - A RESP string representing the boolean value (e.g., `#t\r\n` for true or `#f\r\n` for false).
+
+### `numberToRESP(num: number): string`
+
+Converts a number to the RESP format. Handles integers, floating-point numbers, and special cases like `Infinity` and `NaN`.
+
+- **Parameters**:
+    - `num` *(number)*: The number to serialize.
+- **Returns**:
+    - A RESP string representing the number. For example:
+        - Integer: `:42\r\n`
+        - Floating-point: `,3.14\r\n`
+        - `Infinity`: `,inf\r\n`
+        - `NaN`: `,nan\r\n`
+- **Throws**:
+    - `Error` if the number is too large or small for safe integer serialization.
+
+### `stringToRESP(str: string, type: "bulk" | "simple" = "bulk"): string`
+
+Converts a string to the RESP format.
+
+- **Parameters**:
+    - `str` *(string)*: The string to serialize.
+    - `type` *(string, optional)*: The type of string, either `"bulk"` (default) or `"simple"`.
+- **Returns**:
+    - A RESP string representing the input string. For example:
+        - Bulk string: `$11\r\nHello, Redis!\r\n`
+        - Simple string: `+OK\r\n`
+- **Throws**:
+    - `Error` if an unsupported string type is provided.
+
+### `arrayToRESP(arr: Array<any>): string`
+
+Converts an array to the RESP format. Recursively serializes all elements of the array.
+
+- **Parameters**:
+    - `arr` *(Array<any>)*: The array to serialize.
+- **Returns**:
+    - A RESP string representing the array. For example:
+        - Array: `2\r\n$3\r\nfoo\r\n$3\r\nbar\r\n`
+
+### `objectToRESP(obj: Record<string, any>): string`
+
+Converts an object (key-value pairs) to the RESP format. The keys are serialized as strings, and the values are recursively serialized.
+
+- **Parameters**:
+    - `obj` *(Record<string, any>)*: The object to serialize.
+- **Returns**:
+    - A RESP string representing the object as a RESP map. For example:
+        - Object: `%2\r\n$3\r\nfoo\r\n$3\r\nbar\r\n$3\r\nbaz\r\n:42\r\n`
+
+
 ## Supported Data Types
 
 - **Strings**: Simple and bulk strings.
