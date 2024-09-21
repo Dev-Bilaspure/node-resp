@@ -1,6 +1,6 @@
-# node-resp
+#redis-resp-handler
 
-**node-resp** is a fast and lightweight utility for parsing and serializing RESP (Redis Serialization Protocol) messages in Node.js. It supports a variety of data types including arrays, strings, integers, null values, and error messages, making it ideal for handling Redis communication.
+**redis-resp-handler** is a fast and lightweight utility for parsing and serializing RESP (Redis Serialization Protocol) messages in Node.js. It supports a variety of data types including arrays, strings, integers, null values, and error messages, making it ideal for handling Redis communication.
 
 ## Features
 
@@ -12,10 +12,10 @@
 ## Installation
 
 ```bash
-npm install node-resp
+npm install redis-resp-handler
 ```
 ```bash
-yarn add node-resp
+yarn add redis-resp-handler
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ yarn add node-resp
 To serialize a RESP message, simply call the `serializeToRESP` function and pass in the data (data types: null, boolean, number, string, array, or object) you want to serialize.
 
 ```typescript
-import serializeToRESP  from "node-resp";
+import serializeToRESP  from "redis-resp-handler";
 
 const message = serializeToRESP("Hello, Redis!");
 console.log(message);  // Outputs: $12\r\nHello, Redis!\r\n
@@ -37,7 +37,7 @@ console.log(message);  // Outputs: $12\r\nHello, Redis!\r\n
 To parse a RESP message, use the `parseRESPMessage` function and pass in the string representation of the message. It will return an array of the parsed elements.
 
 ```typescript
-import parseRESPMessage from "node-resp";
+import parseRESPMessage from "redis-resp-handler";
 
 const data = "*2\r\n$3\r\nfoo\r\n$3\r\nbar\r\n";
 const result = parseRESPMessage(data);
