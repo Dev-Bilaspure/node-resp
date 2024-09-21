@@ -46,9 +46,7 @@ console.log(result);  // Outputs: [ ['foo', 'bar'] ]
 
 ## API Reference
 
-### `serializeToRESP(data: any): string`
-
-Serializes a JavaScript object into a RESP message string.
+1. `serializeToRESP(data: any): string`: Serializes a JavaScript object into a RESP message string.
 
 - **Parameters**:
     - `data` *(any)*: The data to serialize (supports strings, numbers, arrays, objects, booleans, null).
@@ -57,9 +55,7 @@ Serializes a JavaScript object into a RESP message string.
 - **Throws**:
     - `Error` if the data type is unsupported.
 
-### `parseRESPMessage(data: string): any[]`
-
-Parses a RESP message string into JavaScript objects.
+2. `parseRESPMessage(data: string): any[]`: Parses a RESP message string into JavaScript objects.
 
 - **Parameters**:
     - `data` *(string)*: The RESP message to parse.
@@ -70,25 +66,19 @@ Parses a RESP message string into JavaScript objects.
 
 ### Other Utility Methods
 
-### `nullToRESP(): string`
-
-Converts `null` to the RESP format.
+1. `nullToRESP(): string`: Converts `null` to the RESP format.
 
 - **Returns**:
     - A RESP string representing `null` (e.g., `_\r\n`).
 
-### `booleanToRESP(bool: boolean): string`
-
-Converts a boolean value to the RESP format.
+2. `booleanToRESP(bool: boolean): string`: Converts a boolean value to the RESP format.
 
 - **Parameters**:
     - `bool` *(boolean)*: The boolean value to serialize.
 - **Returns**:
     - A RESP string representing the boolean value (e.g., `#t\r\n` for true or `#f\r\n` for false).
 
-### `numberToRESP(num: number): string`
-
-Converts a number to the RESP format. Handles integers, floating-point numbers, and special cases like `Infinity` and `NaN`.
+3. `numberToRESP(num: number): string`: Converts a number to the RESP format. Handles integers, floating-point numbers, and special cases like `Infinity` and `NaN`.
 
 - **Parameters**:
     - `num` *(number)*: The number to serialize.
@@ -101,9 +91,7 @@ Converts a number to the RESP format. Handles integers, floating-point numbers, 
 - **Throws**:
     - `Error` if the number is too large or small for safe integer serialization.
 
-### `stringToRESP(str: string, type: "bulk" | "simple" = "bulk"): string`
-
-Converts a string to the RESP format.
+4. `stringToRESP(str: string, type: "bulk" | "simple" = "bulk"): string`: Converts a string to the RESP format.
 
 - **Parameters**:
     - `str` *(string)*: The string to serialize.
@@ -115,9 +103,7 @@ Converts a string to the RESP format.
 - **Throws**:
     - `Error` if an unsupported string type is provided.
 
-### `arrayToRESP(arr: Array<any>): string`
-
-Converts an array to the RESP format. Recursively serializes all elements of the array.
+5. `arrayToRESP(arr: Array<any>): string`: Converts an array to the RESP format. Recursively serializes all elements of the array.
 
 - **Parameters**:
     - `arr` *(Array<any>)*: The array to serialize.
@@ -125,9 +111,7 @@ Converts an array to the RESP format. Recursively serializes all elements of the
     - A RESP string representing the array. For example:
         - Array: `2\r\n$3\r\nfoo\r\n$3\r\nbar\r\n`
 
-### `objectToRESP(obj: Record<string, any>): string`
-
-Converts an object (key-value pairs) to the RESP format. The keys are serialized as strings, and the values are recursively serialized.
+6. `objectToRESP(obj: Record<string, any>): string`: Converts an object (key-value pairs) to the RESP format. The keys are serialized as strings, and the values are recursively serialized.
 
 - **Parameters**:
     - `obj` *(Record<string, any>)*: The object to serialize.
