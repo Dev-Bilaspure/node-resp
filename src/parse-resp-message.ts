@@ -1,3 +1,11 @@
+
+/**
+ * Parses a RESP (Redis Serialization Protocol) message into an array of its elements.
+ *
+ * @param {string} data - The RESP message to parse as a string.
+ * @returns {any[]} An array containing the parsed elements from the RESP message. The array may contain nested arrays, strings, integers, null values, or error objects.
+ * @throws {Error} If the RESP message is malformed.
+ */
 function parseRESPMessage(data: string): any[] {
   const result: any[] = [];
   let i = 0;
@@ -41,6 +49,14 @@ function parseRESPMessage(data: string): any[] {
   return result;
 }
 
+/**
+ * Parses a single RESP element starting at a given index in the input string.
+ * 
+ * @param {string} data - The RESP message string.
+ * @param {number} start - The starting index for parsing the element.
+ * @returns {[any, number]} A tuple where the first value is the parsed element (string, integer, null, error, or array) and the second value is the new index after parsing the element.
+ * @throws {Error} If the RESP element is malformed or unsupported.
+ */
 function parseRESPElement(data: string, start: number): [any, number] {
   const type = data[start];
   let i = start + 1;
