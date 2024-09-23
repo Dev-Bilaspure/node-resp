@@ -25,7 +25,7 @@ yarn add redis-resp-handler
 To serialize a RESP message, simply call the `serializeToRESP` function and pass in the data (data types: null, boolean, number, string, array, or object) you want to serialize.
 
 ```typescript
-import serializeToRESP  from "redis-resp-handler";
+import { serializeToRESP } from "redis-resp-handler";
 
 const message = serializeToRESP("Hello, Redis!");
 console.log(message);  // Outputs: $12\r\nHello, Redis!\r\n
@@ -37,7 +37,7 @@ console.log(message);  // Outputs: $12\r\nHello, Redis!\r\n
 To parse a RESP message, use the `parseRESPMessage` function and pass in the string representation of the message. It will return an array of the parsed elements.
 
 ```typescript
-import parseRESPMessage from "redis-resp-handler";
+import { parseRESPMessage } from "redis-resp-handler";
 
 const data = "*2\r\n$3\r\nfoo\r\n$3\r\nbar\r\n";
 const result = parseRESPMessage(data);
