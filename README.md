@@ -132,6 +132,13 @@ console.log(result);  // Outputs: [ ['foo', 'bar'] ]
 - **Objects**: Serialized as RESP bulk strings.
 - **Complex data structures**: Supports nested arrays, objects, and mixed data types.
 
+
+## Unit Tests
+
+A full-fledged unit test suite is available for both `serializeToRESP` and `parseRESPMessage` functions, covering all test cases and edge cases. 
+You can visit the repository and run `yarn test` to execute the tests or modify and add more test cases to ensure reliability and robustness.
+
+
 ## License
 
 This package is licensed under the MIT License.

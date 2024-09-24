@@ -1,6 +1,6 @@
 {
   "name": "redis-resp-handler",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A fast and lightweight utility for parsing and serializing RESP (Redis Serialization Protocol) messages. Supports a variety of data types, including arrays, strings, integers, and error messages, making it easy to handle Redis communications in JavaScript.",
   "main": "./dist/src/index.js",
   "scripts": {
